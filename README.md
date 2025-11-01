@@ -1,0 +1,1 @@
+Solutions to the exercises in part 1 of fullstackopen.com
