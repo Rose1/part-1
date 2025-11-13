@@ -1,7 +1,12 @@
 import CourseInfo from "./courseinfo/courseinfo"
-
+import Unicafe from "./unicafe/unicafe"
 
 const App = () => {
-  return <CourseInfo/>
+  return (
+    <div>
+      <CourseInfo/>
+      <Unicafe/>
+    </div>
+  )
 }
 export default App
