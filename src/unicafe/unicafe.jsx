@@ -7,12 +7,12 @@ const StatisticLine = (props) => {
 const Statistics = (props) => {
     return (
         <div>
-            <StatisticLine text={props.stats.textGood} total={props.stats.totalGood}/>
-            <StatisticLine text={props.stats.textNeutral} total={props.stats.totalNeutral}/>
-            <StatisticLine text={props.stats.textBad} total={props.stats.totalBad}/>
-            <StatisticLine text={props.stats.textAll} total={props.stats.total}/>
-            <StatisticLine text={props.stats.textAverage} total={props.stats.totalAverage}/>
-            <StatisticLine text={props.stats.textPositive} total={props.stats.totalPercentage} sign={props.stats.sign}/>
+            <StatisticLine text='Good' total={props.stats.totalGood}/>
+            <StatisticLine text='Neutral' total={props.stats.totalNeutral}/>
+            <StatisticLine text='Bad' total={props.stats.totalBad}/>
+            <StatisticLine text='All' total={props.stats.total}/>
+            <StatisticLine text='Average' total={props.stats.totalAverage}/>
+            <StatisticLine text='Positive' total={props.stats.totalPercentage} sign='%'/>
         </div>
     )
 }
@@ -30,19 +30,12 @@ const Unicafe = () => {
     const [percentage, setPercentage] = useState(0)
 
     const data = {
-        textGood: 'Good',
-        textBad: 'Bad',
-        textNeutral: 'Neutral',
-        textAll: 'All',
-        textAverage: 'Average',
-        textPositive: 'Positive',
         totalGood: good,
         totalNeutral: neutral,
         totalBad: bad,
         total: total,
         totalAverage: average,
         totalPercentage: percentage,
-        sign: '%'
     }
 
     const handleGoodClick = () => {
