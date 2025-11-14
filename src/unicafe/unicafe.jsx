@@ -1,5 +1,12 @@
 import { useState } from 'react'
 
+const Statistics = (props) => {
+
+      return (
+        <div>{props.text} {props.total}</div>
+      )
+}
+
 const Unicafe = () => {
 
     // guarda los clics de cada boton en su propio estado
@@ -38,13 +45,6 @@ const Unicafe = () => {
       const updatedTotal = updatedNeutral + good + bad
       setTotal(updatedTotal)
       setPercentage((good/total)*100)
-    }
-
-    const Statistics = (props) => {
-
-      return (
-        <div>{props.text} {props.total}</div>
-      )
     }
 
     const Button = ({ handleClick, text }) => (
