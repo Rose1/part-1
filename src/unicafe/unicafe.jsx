@@ -1,11 +1,9 @@
 import { useState } from 'react'
 
 const Statistics = (props) => {
-
-      return (
-        <div>{props.text} {props.total}</div>
-      )
+    return <div>{props.text} {props.total} {props.simbol}</div>
 }
+
 
 const Unicafe = () => {
 
@@ -44,7 +42,7 @@ const Unicafe = () => {
       setNeutral(updatedNeutral)
       const updatedTotal = updatedNeutral + good + bad
       setTotal(updatedTotal)
-      setPercentage((good/total)*100)
+      setPercentage((good/updatedTotal)*100)
     }
 
     const Button = ({ handleClick, text }) => (
@@ -60,12 +58,18 @@ const Unicafe = () => {
             <Button handleClick={handleNeutralClick} text='Neutral'/>
             <Button handleClick={handleBadClick} text='Bad'/>
             <h2>Statistics</h2>
-            <Statistics text='Good' total={good}/>
-            <Statistics text='Neutral' total={neutral}/>
-            <Statistics text='bad' total={bad}/>
-            <Statistics text='All' total={total}/>
-            <Statistics text='Average' total={average}/>
-            <Statistics text='Positive' total={percentage}/>
+            {total === 0 ? (
+                <p>No feedback given</p>
+            ) : (
+                <>
+                    <Statistics text='Good' total={good}/>
+                    <Statistics text='Neutral' total={neutral}/>
+                    <Statistics text='bad' total={bad}/>
+                    <Statistics text='All' total={total}/>
+                    <Statistics text='Average' total={average}/>
+                    <Statistics text='Positive' total={percentage} simbol='%'/>
+                </>
+            )}
         </div>
     )
 }
