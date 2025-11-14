@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 const StatisticLine = (props) => {
-    return <div>{props.text} {props.total} {props.sign}</div>
+    return <tr> <td>{props.text}</td> <td>{props.total} {props.sign}</td></tr>
 }
 
 const Statistics = (props) => {
