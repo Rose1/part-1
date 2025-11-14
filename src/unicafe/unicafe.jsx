@@ -1,7 +1,20 @@
 import { useState } from 'react'
 
+const StatisticLine = (props) => {
+    return <div>{props.text} {props.total} {props.sign}</div>
+}
+
 const Statistics = (props) => {
-    return <div>{props.text} {props.total} {props.simbol}</div>
+    return (
+        <div>
+            <StatisticLine text={props.stats.textGood} total={props.stats.totalGood}/>
+            <StatisticLine text={props.stats.textNeutral} total={props.stats.totalNeutral}/>
+            <StatisticLine text={props.stats.textBad} total={props.stats.totalBad}/>
+            <StatisticLine text={props.stats.textAll} total={props.stats.total}/>
+            <StatisticLine text={props.stats.textAverage} total={props.stats.totalAverage}/>
+            <StatisticLine text={props.stats.textPositive} total={props.stats.totalPercentage} sign={props.stats.sign}/>
+        </div>
+    )
 }
 
 
@@ -15,6 +28,22 @@ const Unicafe = () => {
     const [punctuation, setPunctuation] = useState(0)
     const [average, setAverage] = useState(0)
     const [percentage, setPercentage] = useState(0)
+
+    const data = {
+        textGood: 'Good',
+        textBad: 'Bad',
+        textNeutral: 'Neutral',
+        textAll: 'All',
+        textAverage: 'Average',
+        textPositive: 'Positive',
+        totalGood: good,
+        totalNeutral: neutral,
+        totalBad: bad,
+        total: total,
+        totalAverage: average,
+        totalPercentage: percentage,
+        sign: '%'
+    }
 
     const handleGoodClick = () => {
       const updatedGood = good + 1
@@ -62,12 +91,7 @@ const Unicafe = () => {
                 <p>No feedback given</p>
             ) : (
                 <>
-                    <Statistics text='Good' total={good}/>
-                    <Statistics text='Neutral' total={neutral}/>
-                    <Statistics text='bad' total={bad}/>
-                    <Statistics text='All' total={total}/>
-                    <Statistics text='Average' total={average}/>
-                    <Statistics text='Positive' total={percentage} simbol='%'/>
+                    <Statistics stats={data}/>
                 </>
             )}
         </div>
