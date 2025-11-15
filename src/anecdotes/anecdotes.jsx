@@ -7,6 +7,9 @@ const Anecdotes = () => {
     const [votes, setVotes] = useState([
         0,0,0,0,0,0,0,0
     ])
+    const [mostvotes, setMostVotes] = useState(0)
+
+    const indexMax = (props) => props.indexOf(Math.max(...props));
 
     const anecdotes = [
         'If it hurts, do it more often.',
@@ -24,13 +27,13 @@ const Anecdotes = () => {
         console.log('random', random)
         const updateSelected = random
         setSelected(updateSelected)
-        
     }
     const handleVote = (props) => {
-        console.log(props)
         const copy = [...votes]
         copy[props] += 1
         setVotes(copy)
+        const index = indexMax(copy)
+        setMostVotes(index)
     }
 
     const Button = ({handleClick, text}) => (
@@ -45,6 +48,10 @@ const Anecdotes = () => {
             <div>Has {votes[selected]} votes</div>
             <Button handleClick={()=>handleVote(selected)} text='Vote'/>
             <Button handleClick={handleNextClick} text='Next anecdote'/>
+            <h2>Anecdote with most votes</h2>
+            <div>{anecdotes[mostvotes]}</div>
+            <div>Has {votes[mostvotes]} votes</div>
+
         </div>
     )
 }
