@@ -4,6 +4,10 @@ const generateRandomNumber = () => Math.trunc(Math.random() * 7 )
 
 const Anecdotes = () => {
     const [selected, setSelected] = useState(0)
+    const [votes, setVotes] = useState([
+        0,0,0,0,0,0,0,0
+    ])
+
     const anecdotes = [
         'If it hurts, do it more often.',
         'Adding manpower to a late software project makes it later!',
@@ -16,13 +20,19 @@ const Anecdotes = () => {
     ]
 
     const handleNextClick = () => {
-        console.log(selected)
-        const random = generateRandomNumber
-        console.log(random)
+        const random = generateRandomNumber()
+        console.log('random', random)
         const updateSelected = random
         setSelected(updateSelected)
         
     }
+    const handleVote = (props) => {
+        console.log(props)
+        const copy = [...votes]
+        copy[props] += 1
+        setVotes(copy)
+    }
+
     const Button = ({handleClick, text}) => (
         <button onClick={handleClick}>{text}</button>
     )
@@ -32,6 +42,8 @@ const Anecdotes = () => {
         <div>
             <h1>Anecdotes</h1>
             <div>{anecdotes[selected]}</div>
+            <div>Has {votes[selected]} votes</div>
+            <Button handleClick={()=>handleVote(selected)} text='Vote'/>
             <Button handleClick={handleNextClick} text='Next anecdote'/>
         </div>
     )
